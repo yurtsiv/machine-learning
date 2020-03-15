@@ -31,10 +31,10 @@ def calc_optimal_a_and_b(x, y):
 plt.suptitle('Linear regression')
 
 primitive_regression_analytical = get_linear_func((calc_optimal_a(test_x, test_y), 0))
-draw_subplot(primitive_regression_analytical, 221, 'Sum of squares, b = 0 (analytical)')
+draw_subplot(primitive_regression_analytical, 221, 'Q = sum(e^2), b = 0 (analytical)')
 
 regression_analytical = get_linear_func(calc_optimal_a_and_b(test_x, test_y))
-draw_subplot(regression_analytical, 222, 'Sum of squares (analytical)')
+draw_subplot(regression_analytical, 222, 'Q = sum(e^2) (analytical)')
 
 
 # Calculating regression line using numerical methods
@@ -46,7 +46,7 @@ def one_var_q(a):
 
 one_var_q_min = minimize(one_var_q, [1]).x
 primitive_regression_numerical = get_linear_func((one_var_q_min[0], 0))
-draw_subplot(primitive_regression_analytical, 223, 'Absolute value, b = 0 (numerical)')
+draw_subplot(primitive_regression_analytical, 223, 'Q = sum(|e|), b = 0 (numerical)')
 
 def two_var_q(a):
   res = 0
@@ -56,6 +56,6 @@ def two_var_q(a):
 
 two_var_q_min = minimize(two_var_q, [1, 1]).x
 regression_numerical = get_linear_func((two_var_q_min[0], two_var_q_min[1]))
-draw_subplot(regression_numerical, 224, 'Absolute value (numerical)')
+draw_subplot(regression_numerical, 224, 'Q = sum(|e|) (numerical)')
 
 plt.show()
